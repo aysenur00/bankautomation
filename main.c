@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
-#include <stdlib.h>                                                    //25. grup banka otomasyonu
+#include <stdlib.h>                                                    
 #include <locale.h>
-                                                                     /* ismail acar 201180037 */
-                                                                     /* ayşenur yavaşoğlu 201180024 */
-typedef struct{                                                      /* Mehmet Emin AYAZ 191180013 */
+                                                                     
+                                                                   
+typedef struct{                                                      
     char isim[50];
     char Soyad[50];
     int MusteriNo;
@@ -21,38 +21,38 @@ void MusteriEkleme()
 	FILE *fpmusteri;
 	    kullanici musteri;
 
-		//Müşteri bilgilerinin isteneceğine dair bilgilendiriliyor.
-		printf("Bankamıza hoş geldiniz.Lütfen bilgilerinizi giriniz.\n");
+		//MÃ¼ÅŸteri bilgilerinin isteneceÄŸine dair bilgilendiriliyor.
+		printf("BankamÄ±za hoÅŸ geldiniz.LÃ¼tfen bilgilerinizi giriniz.\n");
 
-		//Müşteriden adı alınıyor.
+		//MÃ¼ÅŸteriden adÄ± alÄ±nÄ±yor.
 		printf("Ad:");
 		scanf("%s",musteri.isim);
 
-		//Müşteriden soyadı alınıyor.
+		//MÃ¼ÅŸteriden soyadÄ± alÄ±nÄ±yor.
 		printf("Soyad:");
 		scanf("%s",musteri.Soyad);
 
-		//Müşteriden doğum yeri bilgisi alınıyor.
+		//MÃ¼ÅŸteriden doÄŸum yeri bilgisi alÄ±nÄ±yor.
 		printf("Dogum yeri:");
 		scanf("%s",musteri.dyeri);
 
-		//Müşteriden tc kimlik no bilgisi alınıyor.
+		//MÃ¼ÅŸteriden tc kimlik no bilgisi alÄ±nÄ±yor.
 		printf("TC:");
 		scanf("%s",musteri.tc);
 
-		//Müşteriye sistem tarafından rastgele müşteri numarası atanıyor ve müşteriye bildiriliyor.
+		//MÃ¼ÅŸteriye sistem tarafÄ±ndan rastgele mÃ¼ÅŸteri numarasÄ± atanÄ±yor ve mÃ¼ÅŸteriye bildiriliyor.
 		printf("Musteri numarasi:");
 		musteri.MusteriNo=rand()%100+100;
 		printf("%d",musteri.MusteriNo);
 
-		//Dosya işlemleri için musteriler.txt dosyası açılıyor (Üstüne yazma modunda).
+		//Dosya iÅŸlemleri iÃ§in musteriler.txt dosyasÄ± aÃ§Ä±lÄ±yor (ÃœstÃ¼ne yazma modunda).
 		fpmusteri=fopen("musteriler.txt","a");
 
 
-		//fprintf fonksiyonu ile müşteriden aldığımız bilgiler istediğimiz şekilde dosyaya yazılıyor.
+		//fprintf fonksiyonu ile mÃ¼ÅŸteriden aldÄ±ÄŸÄ±mÄ±z bilgiler istediÄŸimiz ÅŸekilde dosyaya yazÄ±lÄ±yor.
 		fprintf(fpmusteri,"\n%d %s %s %s %s",musteri.MusteriNo,musteri.isim,musteri.Soyad,musteri.dyeri,musteri.tc);
 
-		//Dosya kapanıyor.
+		//Dosya kapanÄ±yor.
 		fclose(fpmusteri);
 
 	}
@@ -66,69 +66,69 @@ void HesapAcma()
     int musteriNo,secim;
     FILE *fpHesap,*fp1;
 
-    //Hesaplar dosyasını üstüne yazma moduyla açıyoruz.
+    //Hesaplar dosyasÄ±nÄ± Ã¼stÃ¼ne yazma moduyla aÃ§Ä±yoruz.
     fpHesap=fopen("hesaplar.txt","a");
 
-	//Müşteri kararını değiştirmişse menüye dönebilmesi için bir seçenek sunuluyor.
-    printf("\nDevam etmek için->1 e basınız menüye dönmek için ->2\n");
+	//MÃ¼ÅŸteri kararÄ±nÄ± deÄŸiÅŸtirmiÅŸse menÃ¼ye dÃ¶nebilmesi iÃ§in bir seÃ§enek sunuluyor.
+    printf("\nDevam etmek iÃ§in->1 e basÄ±nÄ±z menÃ¼ye dÃ¶nmek iÃ§in ->2\n");
     scanf("%d",&secim);
 
-	//Müşterinin seçimine göre karar mekanizmaları çalışıyor.
+	//MÃ¼ÅŸterinin seÃ§imine gÃ¶re karar mekanizmalarÄ± Ã§alÄ±ÅŸÄ±yor.
     if(secim==1)
     {
         int say=0;
 
-        //musteriler.txt dosyası okuma modunda açılıyor.
+        //musteriler.txt dosyasÄ± okuma modunda aÃ§Ä±lÄ±yor.
         fp1=fopen("musteriler.txt","r");
 
-        //Müşteriden kendisine sistem tarafından atanmış olan müşteri numarası isteniyor.
+        //MÃ¼ÅŸteriden kendisine sistem tarafÄ±ndan atanmÄ±ÅŸ olan mÃ¼ÅŸteri numarasÄ± isteniyor.
         printf("Lutfen musteri no girin:");
         scanf("%d",&musteriNo);
 
-        //Okuma modunda açtığımız dosyadaki kayıtlı bilgileri alıyoruz.
+        //Okuma modunda aÃ§tÄ±ÄŸÄ±mÄ±z dosyadaki kayÄ±tlÄ± bilgileri alÄ±yoruz.
 	    while(!feof(fp1))
 	    {
 	        fscanf(fp1,"\n%d %s %s %s %s ",&musteri.MusteriNo,&musteri.isim,&musteri.Soyad,&musteri.dyeri,&musteri.tc);
 
-	        //Eğer müşterinin girdiği müşteri no dosyadan okuduğumuz müşteri no ile uyuşuyorsa çalışıyor.
+	        //EÄŸer mÃ¼ÅŸterinin girdiÄŸi mÃ¼ÅŸteri no dosyadan okuduÄŸumuz mÃ¼ÅŸteri no ile uyuÅŸuyorsa Ã§alÄ±ÅŸÄ±yor.
 		    if(musteri.MusteriNo==musteriNo)
             {
 
-            	//Müşteriye hesap bilgileri gösteriliyor.
+            	//MÃ¼ÅŸteriye hesap bilgileri gÃ¶steriliyor.
                 printf("\n%d %s %s %s %s ",musteri.MusteriNo,musteri.isim,musteri.Soyad,musteri.dyeri,musteri.tc);
 		        ++say;
 
-				//Müşteri bilgilendirmesi.
+				//MÃ¼ÅŸteri bilgilendirmesi.
                 printf("\nHesabiniz dogrulandi.Hesap acma islemi devam ediyor.");
 
-				//Müşteriye sistem tarafından rastgele bir hesap numarası veriliyor.
+				//MÃ¼ÅŸteriye sistem tarafÄ±ndan rastgele bir hesap numarasÄ± veriliyor.
                 Hesap.HesapNo=rand()%100+100;
                 printf("\nHesap numaraniz: %d",Hesap.HesapNo);
 
-                //Müşteriden ilk bakiyesi isteniyor (0'dan başlatmak yerine müşteri istediği bakiyeyle hesabını açabiliyor.).
+                //MÃ¼ÅŸteriden ilk bakiyesi isteniyor (0'dan baÅŸlatmak yerine mÃ¼ÅŸteri istediÄŸi bakiyeyle hesabÄ±nÄ± aÃ§abiliyor.).
                 printf("\nIlk bakiyenizi giriniz:");
                 scanf("%f",&Hesap.Bakiye);
 
-				//Müşteri bilgilendirmesi.
+				//MÃ¼ÅŸteri bilgilendirmesi.
                 printf("\nIslem tamamlandi.Iyi gunler dileriz.");
 
-				//Müşteriden aldığımız bilgileri hesaplar dosyasına istediğimiz şekilde kaydediyoruz.
+				//MÃ¼ÅŸteriden aldÄ±ÄŸÄ±mÄ±z bilgileri hesaplar dosyasÄ±na istediÄŸimiz ÅŸekilde kaydediyoruz.
                 fprintf(fpHesap,"\n%d %s %s %.2f",Hesap.HesapNo,musteri.isim,musteri.Soyad,Hesap.Bakiye);
 
             }
 	    }
 
-	    //Dosyalarla işimiz bittiğinden onları kapatıyoruz.
+	    //Dosyalarla iÅŸimiz bittiÄŸinden onlarÄ± kapatÄ±yoruz.
 		fclose(fp1);
 		fclose(fpHesap);
 
-		/*Fonksiyonun başında 0 olarak atadığımız say değişkenimiz eğer yukarıdaki if bloğuna girseydi say++ komutuyla 1 artacaktı ve 0 olmayacaktı dolayısıyla bu kod çalışmayacaktı.
-		Yani yukarıdaki if bloğuna giren durumlar (ki bu durumlar doğrulanmanın sağlandığı durumlardır) say değişkenimizi artırarak 0 olmaktan kurtarıyor.
-		Böylece alttaki if bloğuna girmeyecek. Fakat eğer ki üstteki if bloğuna girilmemişse yani müşteriden alınan müşteri no ile dosyadaki müşteri no tutmuyor ise
-		o zaman say++ komutu çalışmamış olacak ve say=0 olarak kaldığından bu bloğa girilecek.*/
+		/*Fonksiyonun baÅŸÄ±nda 0 olarak atadÄ±ÄŸÄ±mÄ±z say deÄŸiÅŸkenimiz eÄŸer yukarÄ±daki if bloÄŸuna girseydi say++ komutuyla 1 artacaktÄ± ve 0 olmayacaktÄ± dolayÄ±sÄ±yla bu kod Ã§alÄ±ÅŸmayacaktÄ±.
+		Yani yukarÄ±daki if bloÄŸuna giren durumlar (ki bu durumlar doÄŸrulanmanÄ±n saÄŸlandÄ±ÄŸÄ± durumlardÄ±r) say deÄŸiÅŸkenimizi artÄ±rarak 0 olmaktan kurtarÄ±yor.
+		BÃ¶ylece alttaki if bloÄŸuna girmeyecek. Fakat eÄŸer ki Ã¼stteki if bloÄŸuna girilmemiÅŸse yani mÃ¼ÅŸteriden alÄ±nan mÃ¼ÅŸteri no ile dosyadaki mÃ¼ÅŸteri no tutmuyor ise
+		o zaman say++ komutu Ã§alÄ±ÅŸmamÄ±ÅŸ olacak ve say=0 olarak kaldÄ±ÄŸÄ±ndan bu bloÄŸa girilecek.*/
 	    if(say==0)
 	    {
-	    	//Müşteri bilgilendirmesi
+	    	//MÃ¼ÅŸteri bilgilendirmesi
 	    	printf("\nHesap dogrulanamadi!!!");
 
 		}
@@ -140,40 +140,40 @@ void HesapAcma()
 void ParaCekme()
 {
 	 kullanici Hesap;
-     // değişkenlerin atandığı kısım
+     // deÄŸiÅŸkenlerin atandÄ±ÄŸÄ± kÄ±sÄ±m
     float miktar,bakiye1;
     int HesapNumarasi,HesapNumarasi2,say1=0;
 	int satir=0,satir2,temp=0;
 	char *ad,*soyad;
 
-        // hesap dosyasının ve işlemlerin üzerine yazılıp hesap dosyasının yerine geçecek geçici dosyanın pointerları atanıyor
+        // hesap dosyasÄ±nÄ±n ve iÅŸlemlerin Ã¼zerine yazÄ±lÄ±p hesap dosyasÄ±nÄ±n yerine geÃ§ecek geÃ§ici dosyanÄ±n pointerlarÄ± atanÄ±yor
         FILE *fpHesap,*fpGecici;
 
         fpHesap=fopen("hesaplar.txt","r");
-		//kullanıcıdan işlem yapılacak hesap numarası isteniyor
+		//kullanÄ±cÄ±dan iÅŸlem yapÄ±lacak hesap numarasÄ± isteniyor
         printf("\nLutfen hesap numarasi girin:");
         scanf("%d",&HesapNumarasi);
 
-        //dosyanın sonuna kadar okuma işlemi gerçekleştirilmesi için feof kullanılır
+        //dosyanÄ±n sonuna kadar okuma iÅŸlemi gerÃ§ekleÅŸtirilmesi iÃ§in feof kullanÄ±lÄ±r
         while(!feof(fpHesap))
 	    {
 	        satir++;
-		    fscanf(fpHesap,"\n%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);   //okuma işlemleri
+		    fscanf(fpHesap,"\n%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);   //okuma iÅŸlemleri
 
 	    	if(Hesap.HesapNo==HesapNumarasi)
 	    	{
 		        say1++;
                 satir2=satir;
                 HesapNumarasi2=Hesap.HesapNo;
-		        bakiye1=Hesap.Bakiye;                                       /* Hesaba ait değerler işlemlerin yapılması için başka değişkenlere atanır*/
+		        bakiye1=Hesap.Bakiye;                                       /* Hesaba ait deÄŸerler iÅŸlemlerin yapÄ±lmasÄ± iÃ§in baÅŸka deÄŸiÅŸkenlere atanÄ±r*/
 		        ad=Hesap.isim;
 		        soyad=Hesap.Soyad;
-		    	printf("\n%d %s %s %f",Hesap.HesapNo,Hesap.isim,Hesap.Soyad,bakiye1);         //ekrana kullanıcının bilgileri yazdırılır/
+		    	printf("\n%d %s %s %f",Hesap.HesapNo,Hesap.isim,Hesap.Soyad,bakiye1);         //ekrana kullanÄ±cÄ±nÄ±n bilgileri yazdÄ±rÄ±lÄ±r/
 		    	printf("\nHesap numarasi dogrulandi.Isleminiz devam ediyor.");
             }
         }
 		fclose(fpHesap);
-		// eğer girilen  hesap numarası bulunmuyorsa say1 değişkeni üstteki if bloğuna girmediği için 0 kalır böylece hesap numarasının doğruluğu kontrol edilmiş olur.
+		// eÄŸer girilen  hesap numarasÄ± bulunmuyorsa say1 deÄŸiÅŸkeni Ã¼stteki if bloÄŸuna girmediÄŸi iÃ§in 0 kalÄ±r bÃ¶ylece hesap numarasÄ±nÄ±n doÄŸruluÄŸu kontrol edilmiÅŸ olur.
         if(say1==0)
         {
             printf("Hesap dogrulanamadi!!!");
@@ -181,23 +181,23 @@ void ParaCekme()
             exit(0);
 
         }
-         //müşteriden çekilecek tutar alınır
+         //mÃ¼ÅŸteriden Ã§ekilecek tutar alÄ±nÄ±r
 	    printf("\nCekmek istediginiz tutari giriniz:");
         scanf("%f",&miktar);
-		// çekilecek miktar bakiyeden daha fazla olursa işlem gerçekleşmez
+		// Ã§ekilecek miktar bakiyeden daha fazla olursa iÅŸlem gerÃ§ekleÅŸmez
         if(miktar>bakiye1)
 		{
             printf("Bakiyeniz yetersizdir.");
 
 		}
-       //miktar küçükse hesaptan para çekme işlemi gerçekleşir
+       //miktar kÃ¼Ã§Ã¼kse hesaptan para Ã§ekme iÅŸlemi gerÃ§ekleÅŸir
         if(miktar<=bakiye1)
         {
             bakiye1=bakiye1-miktar;
-            //çekilen miktar ve kalan para ekrana yazdırılır
+            //Ã§ekilen miktar ve kalan para ekrana yazdÄ±rÄ±lÄ±r
             printf("\n%.2f TL para cekildi.Kalan bakiye:%.2f",miktar,bakiye1);
             fpHesap=fopen("hesaplar.txt","r");
-            //geçici bir dosya açılır
+            //geÃ§ici bir dosya aÃ§Ä±lÄ±r
             fpGecici=fopen("gecici.txt","a");
 
             while(!feof(fpHesap))
@@ -205,13 +205,13 @@ void ParaCekme()
                 temp++;
                 fscanf(fpHesap,"\n%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);
 
-                //eğer hesap numarası doğru değilse işleme girmez yani değerleri başka değişkene atanmaz ve olduğu gibi gecici dosyasına yazdırılır
+                //eÄŸer hesap numarasÄ± doÄŸru deÄŸilse iÅŸleme girmez yani deÄŸerleri baÅŸka deÄŸiÅŸkene atanmaz ve olduÄŸu gibi gecici dosyasÄ±na yazdÄ±rÄ±lÄ±r
               if(satir2!=temp)
                 {
                     fprintf(fpGecici,"\n%d %s %s %f",Hesap.HesapNo,Hesap.isim,Hesap.Soyad,Hesap.Bakiye);
                 }
 
-                //eğer hesap numarası doğruysa işleme girer ve yeni değerler üzerinde işlem yapılan değişkenler vasıtasıyla gecici dosyasına yazdırılır.
+                //eÄŸer hesap numarasÄ± doÄŸruysa iÅŸleme girer ve yeni deÄŸerler Ã¼zerinde iÅŸlem yapÄ±lan deÄŸiÅŸkenler vasÄ±tasÄ±yla gecici dosyasÄ±na yazdÄ±rÄ±lÄ±r.
 
                 if(satir2==temp)
                 {
@@ -221,7 +221,7 @@ void ParaCekme()
             fclose(fpGecici);
             fclose(fpHesap);
 
-            //hesaplar klasörü silinir ve yerine yeni değerlere sahip geçici dosya adı değiştirilerek gelir.
+            //hesaplar klasÃ¶rÃ¼ silinir ve yerine yeni deÄŸerlere sahip geÃ§ici dosya adÄ± deÄŸiÅŸtirilerek gelir.
             remove("hesaplar.txt");
             rename("gecici.txt","hesaplar.txt");
 
@@ -240,46 +240,46 @@ kullanici Hesap;
     int HesapNumarasi,HesapNumarasi1,say=0,satir=0,temp=0,satir2;
     char *ad,*soyad;
 
-     //kullanıcıdan işlem yapılacak hesap numarası alınır
+     //kullanÄ±cÄ±dan iÅŸlem yapÄ±lacak hesap numarasÄ± alÄ±nÄ±r
     printf("\nHesap numaranizi giriniz:");
     scanf("%d",&HesapNumarasi);
 
     FILE *fpHesap, *fpGecici;
-    //geçici dosya ve hesaplar dosyası açılır
+    //geÃ§ici dosya ve hesaplar dosyasÄ± aÃ§Ä±lÄ±r
     fpHesap=fopen("hesaplar.txt","r+");
     fpGecici=fopen("gecici.txt","a");
 
-     //dosyanın sonuna kadar okuma işlemi gerçekleştirilmesi için feof kullanılır
+     //dosyanÄ±n sonuna kadar okuma iÅŸlemi gerÃ§ekleÅŸtirilmesi iÃ§in feof kullanÄ±lÄ±r
 	while(!feof(fpHesap))
 	{
         satir++;
-		fscanf(fpHesap,"%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);       //okuma işlemleri
+		fscanf(fpHesap,"%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);       //okuma iÅŸlemleri
 
 		if(Hesap.HesapNo==HesapNumarasi)
 		{
 		    satir2=satir;
             say++;
-			printf("\n%d %s %s %f",Hesap.HesapNo,Hesap.isim,Hesap.Soyad,Hesap.Bakiye);       //bilgiler ekrana yazdırılır
+			printf("\n%d %s %s %f",Hesap.HesapNo,Hesap.isim,Hesap.Soyad,Hesap.Bakiye);       //bilgiler ekrana yazdÄ±rÄ±lÄ±r
 
             HesapNumarasi1=Hesap.HesapNo;
-            bakiye=Hesap.Bakiye;                                /* Hesaba ait değerler işlemlerin yapılması için başka değişkenlere atanır*/
+            bakiye=Hesap.Bakiye;                                /* Hesaba ait deÄŸerler iÅŸlemlerin yapÄ±lmasÄ± iÃ§in baÅŸka deÄŸiÅŸkenlere atanÄ±r*/
             ad=Hesap.isim;
             soyad=Hesap.Soyad;
 
             printf("\nHesap dogrulandi.Islem devam ediyor.");
 
-               //kullanıcıdan işlem yapılacak miktar alınır
+               //kullanÄ±cÄ±dan iÅŸlem yapÄ±lacak miktar alÄ±nÄ±r
 
             printf("\nLutfen yatirmak istediginiz tutari girin:");
             scanf("%f",&miktar);
 
             bakiye=bakiye+miktar;
-            //yatırılan miktar ve son para ekrana yazdırılır
+            //yatÄ±rÄ±lan miktar ve son para ekrana yazdÄ±rÄ±lÄ±r
             printf("\n%.2f tl yatirildi yeni bakiye %.2f",miktar,bakiye);
             }
     }
     rewind(fpHesap);
-    //eğer hesap numarası yanlışsa say değişkeni yukarıdaki if bloğuna  girmez ve 0 olarak kalır
+    //eÄŸer hesap numarasÄ± yanlÄ±ÅŸsa say deÄŸiÅŸkeni yukarÄ±daki if bloÄŸuna  girmez ve 0 olarak kalÄ±r
 	if(say==0)
     {
         printf("Hesap dogrulanamadi!!!");
@@ -288,15 +288,15 @@ kullanici Hesap;
     while(!feof(fpHesap))
     {
         temp++;
-        fscanf(fpHesap,"\n%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);    //okuma işlemleri
+        fscanf(fpHesap,"\n%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);    //okuma iÅŸlemleri
 
-        //hesap numarası yanlışsa değerler gecici dosyasına direk yazdırılır
+        //hesap numarasÄ± yanlÄ±ÅŸsa deÄŸerler gecici dosyasÄ±na direk yazdÄ±rÄ±lÄ±r
 
         if(temp!=satir2)
         {
             fprintf(fpGecici,"\n%d %s %s %f",Hesap.HesapNo,Hesap.isim,Hesap.Soyad,Hesap.Bakiye);
 
-            //hesap numarası doğruysa işlem yapılmış yeni değerler gecici dosyasına yazdırılır
+            //hesap numarasÄ± doÄŸruysa iÅŸlem yapÄ±lmÄ±ÅŸ yeni deÄŸerler gecici dosyasÄ±na yazdÄ±rÄ±lÄ±r
 
         }
         else if(temp==satir2)
@@ -308,7 +308,7 @@ kullanici Hesap;
     fclose(fpHesap);
     fclose(fpGecici);
 
-    //geçici dosyası hesaplar dosyasıyla yer değiştirir
+    //geÃ§ici dosyasÄ± hesaplar dosyasÄ±yla yer deÄŸiÅŸtirir
 
     remove("hesaplar.txt");
     rename("gecici.txt","hesaplar.txt");
@@ -321,18 +321,18 @@ void HesapOzeti()
 {
 	kullanici Hesap;
 	FILE *fpHesap;
-	//hesaplar dosyası açılır
+	//hesaplar dosyasÄ± aÃ§Ä±lÄ±r
     fpHesap=fopen("hesaplar.txt","r");
     int hesapNumarasi1;
-    //kullanıcıdan özetine bakılacak hesap numarası alınır
+    //kullanÄ±cÄ±dan Ã¶zetine bakÄ±lacak hesap numarasÄ± alÄ±nÄ±r
     printf("Lutfen hesap ozetini gormek istediginiz hesap numarasini girin:");
     scanf("%d",&hesapNumarasi1);
-//dosyanın sonuna kadar okuma işlemi gerçekleştirilmesi için feof kullanılır
+//dosyanÄ±n sonuna kadar okuma iÅŸlemi gerÃ§ekleÅŸtirilmesi iÃ§in feof kullanÄ±lÄ±r
     while(!feof(fpHesap))
     {
-        fscanf(fpHesap,"%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);  //okuma işlemleri
+        fscanf(fpHesap,"%d %s %s %f",&Hesap.HesapNo,Hesap.isim,Hesap.Soyad,&Hesap.Bakiye);  //okuma iÅŸlemleri
         if(Hesap.HesapNo==hesapNumarasi1){
-        	//hesap numarası doğruysa değerler ekrana yazdırılır
+        	//hesap numarasÄ± doÄŸruysa deÄŸerler ekrana yazdÄ±rÄ±lÄ±r
         	printf("%d %s %s %f",Hesap.HesapNo,Hesap.isim,Hesap.Soyad,Hesap.Bakiye);
 		}
 	}
@@ -347,26 +347,26 @@ int main()
 	setlocale(LC_ALL,"Turkish");
 	srand(time(NULL));
 
-	//Menüden istenen işleme gidilmesi için belirlenmiş seçim değişkeni
+	//MenÃ¼den istenen iÅŸleme gidilmesi iÃ§in belirlenmiÅŸ seÃ§im deÄŸiÅŸkeni
 	int secim;
 
 
 	do{
 
-	//Müşteri için görsel menü.
-	printf("\n\t**HOŞ GELDİNİZ**\n");
-	printf("\tYeni Müşteri-->1\n");
-	printf("\tHesap açma-->2\n");
-	printf("\tPara çekme-->3\n");
-	printf("\tPara yatırma-->4\n");
-	printf("\tHesap özeti-->5\n");
-	printf("\tÇıkış Yapmak için -->9\n");
+	//MÃ¼ÅŸteri iÃ§in gÃ¶rsel menÃ¼.
+	printf("\n\t**HOÅ GELDÄ°NÄ°Z**\n");
+	printf("\tYeni MÃ¼ÅŸteri-->1\n");
+	printf("\tHesap aÃ§ma-->2\n");
+	printf("\tPara Ã§ekme-->3\n");
+	printf("\tPara yatÄ±rma-->4\n");
+	printf("\tHesap Ã¶zeti-->5\n");
+	printf("\tÃ‡Ä±kÄ±ÅŸ Yapmak iÃ§in -->9\n");
 
-	//Müşteriden işlem girdisi alınıyor.
+	//MÃ¼ÅŸteriden iÅŸlem girdisi alÄ±nÄ±yor.
 	printf("Yapmak istediginiz islemi giriniz: ");
 	scanf("%d",&secim);
 
-	//Switch case yardımıyla istenen işlem için gerekli fonksiyonlara gidiliyor.
+	//Switch case yardÄ±mÄ±yla istenen iÅŸlem iÃ§in gerekli fonksiyonlara gidiliyor.
             switch(secim)
             {
                 case 1:
